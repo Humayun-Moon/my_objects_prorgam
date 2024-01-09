@@ -4,13 +4,29 @@ class Items:
     all_items = []
     def __init__(self,name,price,quantity=0):
         # Assign to obejes
-        self.name = name
-        self.price = price
+        self.__name = name
+        self.__price = price
         self.quantity = quantity
         Items.all_items.append(self)
         # To set a condition for each paramiter by assert
         assert self.price >=1, f"{self.price} is more than of equal One"
         assert self.quantity >= 1,f"{self.quantity} is more than of equal One"
+
+    @property 
+    # property decorator = Read-Only Attribute
+    def name (self):
+        return  self.__name 
+    @property
+    def price (self):
+        return self.__price 
+    @property
+    def read_only_name (self):
+        for i in range(1,10):
+            print(i,end=" ")
+        print()     
+        
+
+
 
     def info(self):  
         print(f"The {self.name} each price is {self.price} and I need to {self.quantity}")
@@ -25,7 +41,7 @@ class Items:
     @classmethod    
     def import_csv(cls):
         script_path = os.path.dirname(os.path.abspath(__file__))
-        csv_path = os.path.join(script_path, 'items.csv')
+        csv_path = os.path.join(script_path, 'new.csv')
 
         with open(csv_path, 'r') as f:
             reader = csv.DictReader(f)
@@ -60,7 +76,8 @@ class Items:
         elif isinstance(num, float):
             return False
         else:
-            return False
+            return False 
+    
         
                 
 
@@ -72,23 +89,22 @@ class Items:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.price}, {self.quantity})"    
 
-
+Items("Pen", 5, 1)
 item1 = Items("Mobile", 12344, 20)
 item2 = Items("Computer", 30000, 10)
 item3= Items("Laptop", 50000, 5)
 item4 = Items("LED TV", 60000, 2)
+# print("Below the simple method to get all items from class")
+# get_all_iteams = Items.all_items
+# print("Got all items by using simple" ,get_all_iteams) 
+# print()
+# print("Below the import csv file to get all items from class by using ClassicMethod ")
+# get_all_iteams_csv = Items.import_csv()
+# print(f"Got all items by using CSV file: {get_all_iteams_csv}") 
 
-print("Below the simple method to get all items from class")
-get_all_iteams = Items.all_items
-print("Got all items by using simple" ,get_all_iteams) 
-print()
-print("Below the import csv file to get all items from class by using ClassicMethod ")
-get_all_iteams_csv = Items.import_csv()
-print(f"Got all items by using CSV file: {get_all_iteams_csv}") 
-
-print()
-print("Check Is_integer by using staic method")
-is_integer = Items.is_integer(7)
-print(is_integer)
+# print()
+# print("Check Is_integer by using staic method")
+# is_integer = Items.is_integer(7)
+# print(is_integer)
 
            

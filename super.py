@@ -17,11 +17,15 @@ print()
 new1 =Add("Keyboard", 2000, 30,5)
 new1.total_price()        
 new1.average_price() 
-print("-------------------------------")        
+print("-------------------------------")   
+
 print("Here I added new items by using super method")  
 print() 
 new_all_items = Add.all_items
 print(new_all_items)
+new1.total_price() 
+new1.average_price()
+
 
 
 
